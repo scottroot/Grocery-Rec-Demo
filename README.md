@@ -11,7 +11,7 @@
 
 ----
 ## Artifacts and Documentation
-Uploading to /docs folder
+[Uploading to /docs folder](https://github.com/scottroot/Grocery-Rec-Demo/docs)
 - **Business Case:** Project justification and strategic goals.
 - **User Personas:** Profiles of target users and their needs.
 - **System Architecture:** Technical design of the system.
