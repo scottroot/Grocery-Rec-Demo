@@ -11,18 +11,10 @@
 
 ----
 ## Artifacts and Documentation
-[Uploading to /docs folder](https://github.com/scottroot/Grocery-Rec-Demo/docs)
+[Uploading to /docs folder]([https://github.com/scottroot/Grocery-Rec-Demo/docs](https://github.com/scottroot/Grocery-Rec-Demo/tree/main/docs))
 - **Business Case:** Project justification and strategic goals.
 - **User Personas:** Profiles of target users and their needs.
 - **System Architecture:** Technical design of the system.
 - **API Documentation:** Endpoints and data structures.
+
   
-----
-## System Architecture
-```mermaid
-graph TD
-    Browser((Browser)) --> Frontend[Frontend: React]
-    Frontend --> Backend[Backend: Next.js API]
-    Backend --> Database[Database: MongoDB]
-    Backend --> Search[Vector Service: Weaviate]
-    Backend --> Recommendations[Recommendation Engine: Sentence Transformers fine-tuned]
