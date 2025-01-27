@@ -5,7 +5,7 @@
 2. **Product Recommendations:** Display product recommendations specifically tailored for user.
     - Identify similar or related products - shown on product detail pages.
     - Identify complementary products - shown on cart page.
-3. **Live User Profiles:** Enable users to build their own carts preferences and past orders.
+3. **Live User Profiles:** Enable users to build their own carts and receive personalized recommendations.
 4. **Historic User Profiles:** Users can select an existing historical account and see what recommendations they would receive.
 6. **Responsive Design:** Ensure full usability across desktop. Mobile can be a lower priority.
   
