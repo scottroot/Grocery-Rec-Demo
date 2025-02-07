@@ -1,11 +1,11 @@
 import ProductGrid from "@/components/ProductGrid";
 import {vectorSearch} from "@/lib/neo4j/queries/vectorSearch";
+import type {SearchParams} from "@/types";
 
-type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
 export default async function SearchPage({ searchParams, }: { searchParams: SearchParams }) {
-  const query = (await searchParams).query as string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const query = (await searchParams).query as string|undefined;
+
   let results: null | any[] = null;
   if(query) {
     results = await vectorSearch(query);

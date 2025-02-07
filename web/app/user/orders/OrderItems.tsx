@@ -2,7 +2,6 @@ import {Order} from "@/types";
 
 
 export default function OrderItems({order}: {order: Order}) {
-  // console.log(JSON.stringify(order));
   return (
     <li className="overflow-hidden shadow ring-1 ring-black/5 sm:rounded-lg">
       <div className="flex items-center justify-between p-2 px-4 sm:px-6 lg:px-8 sm:flex-auto">
@@ -38,26 +37,6 @@ export default function OrderItems({order}: {order: Order}) {
 
         </tbody>
       </table>
-      {/*<ul>*/}
-      {/*  {order.items && order.items.map((item, idx) => (*/}
-      {/*    <li key={`${item.productId}_${idx}`} className="flex py-4">*/}
-      {/*      <div className="relative flex flex-1 flex-col justify-between ml-4 sm:ml-6">*/}
-      {/*        <div>*/}
-      {/*          <div className="flex justify-between sm:grid sm:grid-cols-2">*/}
-      {/*            <div className="pr-6">*/}
-      {/*              <h3 className="text-sm">*/}
-      {/*                <p className="font-medium text-gray-700 hover:text-gray-800">*/}
-      {/*                  {item.productName}what*/}
-      {/*                </p>*/}
-      {/*              </h3>*/}
-      {/*              <p className="mt-1 text-sm text-gray-500">{item.productId}</p>*/}
-      {/*            </div>*/}
-      {/*          </div>*/}
-      {/*        </div>*/}
-      {/*      </div>*/}
-      {/*    </li>*/}
-      {/*  ))}*/}
-      {/*</ul>*/}
     </li>
   )
 }

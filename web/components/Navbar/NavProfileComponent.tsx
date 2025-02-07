@@ -1,5 +1,6 @@
-import {Menu, MenuButton, MenuItem, MenuItems} from "@headlessui/react";
+import Image from "next/image";
 import Link from "next/link";
+import {Menu, MenuButton, MenuItem, MenuItems} from "@headlessui/react";
 import {useCart} from "@/lib/useCart";
 
 
@@ -11,11 +12,15 @@ export default function NavProfileComponent() {
         <MenuButton className="relative flex rounded-full bg-white text-sm focus:outline-none xfocus:ring-2 xfocus:ring-indigo-500 xfocus:ring-offset-2">
           <span className="absolute -inset-1.5" />
           <span className="sr-only">Open user menu</span>
-          <img
-            alt=""
-            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-            className="size-8 rounded-full"
-          />
+          <div className="relative size-8">
+            <Image
+              fill
+              sizes="32px"
+              alt=""
+              src="/avatars/0.jpg"
+              className="rounded-full"
+            />
+          </div>
         </MenuButton>
       </div>
       <MenuItems

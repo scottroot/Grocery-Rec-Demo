@@ -14,7 +14,9 @@ export async function GET(req) {
 
     const parsedProductIds = productIds.map(id => Number(id)).filter(id => !isNaN(id));
     const recommendations = await getSimilarUserProducts(parsedProductIds)
+
     return NextResponse.json({ success: true, recommendations });
+
   } catch (error) {
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }

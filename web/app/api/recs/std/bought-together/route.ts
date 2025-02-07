@@ -1,8 +1,8 @@
-import {NextResponse} from "next/server";
-import {stdGetBoughtTogether} from "@/lib/neo4j/queries/recommendations/stdGetBoughtTogether";
+import { NextRequest, NextResponse } from "next/server";
+import { stdGetBoughtTogether } from "@/lib/neo4j/queries/recommendations/stdGetBoughtTogether";
 
 
-export async function GET(req) {
+export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
     const userId = Number(searchParams.get('userId') || 0);

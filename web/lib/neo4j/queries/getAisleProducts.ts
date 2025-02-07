@@ -15,7 +15,7 @@ export async function getAisleProducts(aisleId: number): Promise<Aisle|undefined
     const products = result[0].products.map(p => ({
       productId: p.properties.product_id,
       productName: toTitleCase(p.properties.product_name),
-    }))
+    }));
     return {
       aisleId,
       aisleName: toTitleCase(result[0].products[0].properties.aisle_name),

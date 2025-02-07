@@ -13,7 +13,7 @@ export async function GET(req) {
     }
 
     const recommendations = await aiGetBoughtTogether(productIds, userId)
-    console.log(recommendations)
+
     return NextResponse.json({ success: true, recommendations });
 
   } catch (error) {

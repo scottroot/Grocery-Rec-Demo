@@ -1,14 +1,12 @@
-import {graphRead} from "@/lib/neo4j/neo4js";
-import CartItems from "@/app/cart/CartItems";
-import {ArrowUturnLeftIcon} from "@heroicons/react/20/solid";
 import Link from "next/link";
+import {ArrowUturnLeftIcon} from "@heroicons/react/20/solid";
+import CartItems from "./CartItems";
 import RecGrid from "./RecGrid";
+import {SearchParams} from "@/types";
 
 
-export default async function CartPage({searchParams,}: { searchParams: {ret?: string} }) {
-  const {ret: returnUrl} = await searchParams;
-  // const session = await getIronSession<SessionData>(await cookies(), sessionOptions);
-  // const recommendations = session?.items?.length > 0 && await getRecommendations(session.items?.map(i => Number(i.product_id)))
+export default async function CartPage({ searchParams, }: { searchParams: SearchParams }) {
+  const returnUrl = (await searchParams).ret as string|undefined;
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="bg-white">
@@ -23,12 +21,12 @@ export default async function CartPage({searchParams,}: { searchParams: {ret?: s
             Shopping Cart
           </h1>
 
-          <form className="mt-8 mb-6">
+          <div className="mt-8 mb-6">
             <div>
               <h2 className="sr-only">Items in your shopping cart</h2>
               <CartItems />
             </div>
-          </form>
+          </div>
           <RecGrid />
         </div>
       </div>

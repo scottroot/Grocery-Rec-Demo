@@ -1,10 +1,10 @@
-import {Product, ProductFull} from "@/types";
+import type { Product } from "@/types";
 import toTitleCase from "@/utils/toTitleCase";
 import AddToCartButton from "@/components/AddToCartButton";
 import Link from "next/link";
 
 
-function ListItem({ result }: { result: ProductFull }) {
+function ListItem({ result }: { result: Product }) {
   return (
     <li className="rounded border-2 border-gray-200">
       <div className="flex flex-col justify-between min-w-0 h-40 px-4 py-5 ">

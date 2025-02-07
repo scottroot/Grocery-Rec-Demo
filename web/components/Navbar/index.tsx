@@ -1,18 +1,20 @@
 "use client"
-import {Disclosure, Menu, MenuButton, MenuItem, MenuItems} from '@headlessui/react'
-import SearchBox from "@/components/Navbar/SearchBox";
 import Link from "next/link";
-import NavCartComponent from "@/components/Navbar/NavCartComponent";
-import NavProfileComponent from "@/components/Navbar/NavProfileComponent";
-import {usePathname} from "next/navigation";
+import { usePathname } from "next/navigation";
+import { Disclosure } from '@headlessui/react'
 import clsx from "clsx";
+import SearchBox from "./SearchBox";
+import NavCartComponent from "./NavCartComponent";
+import NavProfileComponent from "./NavProfileComponent";
+
+
+const MENU_ITEMS = [
+  {href: "/", label: "Go Shopping"},
+  {href: "/info", label: "Demo Info"},
+];
 
 export default function Navbar() {
   const pathname = usePathname();
-  const menuItems = [
-    {href: "/departments", label: "Go Shopping"},
-    {href: "/info", label: "Demo Info"},
-  ];
 
   return (
     <Disclosure as="nav" className="bg-white shadow fixed w-full top-0 left-0 right-0 z-[1000]">
@@ -25,7 +27,7 @@ export default function Navbar() {
               </div>
             </Link>
             <div className="ml-6 flex space-x-8">
-              {menuItems.map((item) => (
+              {MENU_ITEMS.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
@@ -51,6 +53,7 @@ export default function Navbar() {
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <NavProfileComponent />
           </div>
+
         </div>
       </div>
     </Disclosure>

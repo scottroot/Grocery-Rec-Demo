@@ -2,10 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-import GithubIcon from "@/icons/GithubIcon";
-import MediumIcon from "@/icons/MediumIcon";
-import SubstackIcon from "@/icons/SubstackIcon";
 import SocialIcon from "@/icons/SocialIcon";
+import { Suspense } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,36 +30,36 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navbar />
+        <Suspense fallback={null}>
+          <Navbar />
+        </Suspense>
         <div className="pt-16">
           {children}
         </div>
-    <footer className="bg-white">
-      <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8 lg:py-24">
-        <div className="mt-12 border-t border-gray-900/10 pt-8 md:flex md:items-center md:justify-between">
-          <div className="flex gap-x-6 md:order-2">
-            <a href="github.com/#" className="text-gray-600 hover:text-gray-800" title="Github">
-              <span className="sr-only">Github</span>
-              {/*<GithubIcon aria-hidden="true" className="size-6" />*/}
-              <SocialIcon network="github" className="size-7 rounded-full" />
-            </a>
-            <a href="substack.com/scotthendrix" className="text-gray-600 hover:text-gray-800" title="Substack">
-              <span className="sr-only">Substack</span>
-              {/*<SubstackIcon aria-hidden="true" className="size-6" />*/}
-              <SocialIcon network="substack" className="size-7 rounded-full" />
-            </a>
-            <a href="medium.com/#" className="text-gray-600 hover:text-gray-800" title="Medium">
-              <span className="sr-only">Github</span>
-              {/*<MediumIcon aria-hidden="true" className="size-6" />*/}
-              <SocialIcon network="medium" className="size-7 rounded-full" />
-            </a>
+
+        <footer className="bg-white">
+          <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8 lg:py-24">
+            <div className="mt-12 border-t border-gray-900/10 pt-8 md:flex md:items-center md:justify-between">
+              <div className="flex gap-x-6 md:order-2">
+                <a href="github.com/#" className="text-gray-600 hover:text-gray-800" title="Github">
+                  <span className="sr-only">Github</span>
+                  <SocialIcon network="github" className="size-7 rounded-full" />
+                </a>
+                <a href="substack.com/scotthendrix" className="text-gray-600 hover:text-gray-800" title="Substack">
+                  <span className="sr-only">Substack</span>
+                  <SocialIcon network="substack" className="size-7 rounded-full" />
+                </a>
+                <a href="medium.com/#" className="text-gray-600 hover:text-gray-800" title="Medium">
+                  <span className="sr-only">Github</span>
+                  <SocialIcon network="medium" className="size-7 rounded-full" />
+                </a>
+              </div>
+              <p className="mt-8 text-sm/6 text-gray-600 md:order-1 md:mt-0">
+                &copy; 2025 Grocery Basket Demo, Inc. All rights reserved.
+              </p>
+            </div>
           </div>
-          <p className="mt-8 text-sm/6 text-gray-600 md:order-1 md:mt-0">
-            &copy; 2025 Grocery Basket Demo, Inc. All rights reserved.
-          </p>
-        </div>
-      </div>
-    </footer>
+        </footer>
 
       </body>
     </html>

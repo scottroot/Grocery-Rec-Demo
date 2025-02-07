@@ -1,5 +1,5 @@
-import {NextResponse} from "next/server";
-import {GetObjectCommand, S3Client} from "@aws-sdk/client-s3";
+import { NextResponse } from "next/server";
+import { GetObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
 
@@ -13,7 +13,12 @@ const s3Client = new S3Client({
   },
 });
 
-
+/**
+ * Handles GET requests to generate a signed URL for a user-specific JSON file stored in S3.
+ *
+ * @param {Request} req - Request searchParam with key `userId`.
+ * @returns {Promise<NextResponse<{url?: string, error?: string}>>} The pre-signed url to the user persona json stored in S3.
+ */
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const userId = Number(searchParams.get('userId') || 0);

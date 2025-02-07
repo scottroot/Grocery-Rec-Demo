@@ -6,9 +6,10 @@ import {SessionData, sessionOptions} from "@/lib/session";
 import { cookies } from "next/headers";
 import {getUserOrders} from "@/lib/neo4j/queries/getUserOrders";
 import OrderItems from "@/app/user/orders/OrderItems";
+import {SearchParams} from "@/types";
 
 
-export default async function OrdersPage({searchParams,}: { searchParams: {ret?: string} }) {
+export default async function OrdersPage({searchParams,}: { searchParams: SearchParams }) {
   const {ret: returnUrl} = await searchParams;
   const session = await getIronSession<SessionData>(await cookies(), sessionOptions);
   const userId = session.userId;
@@ -21,7 +22,7 @@ export default async function OrdersPage({searchParams,}: { searchParams: {ret?:
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="bg-white">
-        {returnUrl &&
+        {typeof returnUrl === 'string' &&
           <Link href={returnUrl} className="group flex items-center">
             <ArrowUturnLeftIcon className="inline-flex w-3 h-4 mr-2" />
             back to previous page

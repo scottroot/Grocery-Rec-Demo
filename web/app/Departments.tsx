@@ -51,7 +51,12 @@ export default async function DepartmentsGrid() {
             >
               <Link href={`/dept/${department.departmentId}`}>
                 <div className="relative w-auto max-w-16 aspect-square mx-auto mb-4">
-                  <Image alt={department.departmentName} src={`/${department.departmentName.replaceAll(" ", "-")}.jpg`} fill />
+                  <Image
+                    fill
+                    sizes="64px"
+                    alt={department.departmentName}
+                    src={`/${department.departmentName.replaceAll(" ", "-")}.jpg`}
+                  />
                 </div>
               </Link>
               {/* Department Header */}

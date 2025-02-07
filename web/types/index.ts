@@ -1,4 +1,5 @@
 
+
 export type Product = {
   productId: number;
   productName?: string;
@@ -41,4 +42,5 @@ export interface Department {
   aisles?: Aisle[];
 }
 
-export type SearchParams = Promise<{ [key: string]: string | string[] | number | number[] | undefined }>
+// Nextjs version 15 changed this to async, so wrap in promise now
+export type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>

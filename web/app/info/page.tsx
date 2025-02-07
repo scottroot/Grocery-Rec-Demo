@@ -1,12 +1,11 @@
 
-
 const stats = [
   { id: 1, name: 'Orders', value: '3.4 million' }, // 3421083
   { id: 2, name: 'Users', value: '206,209' }, // 206209
   { id: 3, name: 'Products', value: '49,688' },
 ]
 
-export default function Page() {
+export default async function Page() {
   return (
     <div
       className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center

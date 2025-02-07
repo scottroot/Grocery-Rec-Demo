@@ -1,10 +1,8 @@
 "use client"
-import {ShoppingCartIcon} from "@heroicons/react/24/outline";
 import Link from "next/link";
 import {usePathname, useSearchParams} from "next/navigation";
+import {ShoppingCartIcon} from "@heroicons/react/24/outline";
 import {useCart} from "@/lib/useCart";
-
-
 
 
 export default function NavCartComponent() {

@@ -1,5 +1,3 @@
-import Image from "next/image";
-import {graphRead} from "@/lib/neo4j/neo4js";
 import {GetObjectCommand, S3Client} from "@aws-sdk/client-s3";
 import {getIronSession} from "iron-session";
 import {SessionData, sessionOptions} from "@/lib/session";
@@ -53,18 +51,11 @@ export default async function Page() {
     )
   }
   const str = await response.Body?.transformToString();
-  // console.log(str)
-  // const cleanedString = str?.replace(/\n/g, "").replace(/\r/g, "");
-
   const p = JSON.parse(str!).user_persona;
-  // console.log(JSON.stringify(p, null, 4));
 
   return (
     <div
-      className="xgrid
-      xgrid-rows-[20px_1fr_20px] items-center justify-items-center
-      xmin-h-screen p-8 pb-20 gap-16 sm:p-20
-      font-[family-name:var(--font-geist-sans)]"
+      className="items-center justify-items-center p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]"
     >
       <div className="text-sm font-medium text-indigo-600 hover:text-indigo-500">
           User personas are AI-generated based on the user ID&apos;s past orders.
