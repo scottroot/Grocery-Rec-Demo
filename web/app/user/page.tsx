@@ -16,42 +16,54 @@ const s3Client = new S3Client({
 });
 
 
+async function getUserPersona(userId: number) {
+  try {
+    const response = await s3Client.send(
+      new GetObjectCommand({
+        Bucket: S3_BUCKET_NAME,
+        Key: `${userId}.json`,
+      }),
+    );
+    if(!response) return;
+    const str = await response.Body?.transformToString();
+    return JSON.parse(str!).user_persona;
+  }
+  catch(err) {
+    console.log(err)
+  }
+}
+
+
+
+function NotFound() {
+  return (
+    <div className="text-center">
+      <p className="text-base font-semibold text-indigo-600">404</p>
+      <h1 className="mt-4 text-balance text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl">
+        User not found
+      </h1>
+      <p className="mt-6 text-pretty text-lg font-medium text-gray-500 sm:text-xl/8">
+        Sorry, we couldn&apos;t find a profile for this user.
+      </p>
+      <div className="mt-10 flex items-center justify-center gap-x-6">
+        <Link
+          href="/user/orders"
+          className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        >
+          You can still view the user&apos;s order history here.
+        </Link>
+      </div>
+    </div>
+  )
+}
+
 export default async function Page() {
   const session = await getIronSession<SessionData>(await cookies(), sessionOptions);
   const userId = session.userId;
-  const response = await s3Client.send(
-    new GetObjectCommand({
-      Bucket: S3_BUCKET_NAME,
-      Key: `${userId}.json`,
-    }),
-  );
+  if(typeof userId !== 'number') return <NotFound />;
 
-  if(!response) {
-    return (
-      <div className="text-center">
-        <p className="text-base font-semibold text-indigo-600">404</p>
-        <h1 className="mt-4 text-balance text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl">
-          User not found
-        </h1>
-        <p className="mt-6 text-pretty text-lg font-medium text-gray-500 sm:text-xl/8">
-          Sorry, we couldn&apos;t find a profile for this user.
-        </p>
-        <div className="mt-10 flex items-center justify-center gap-x-6">
-          <Link
-            href="/user/orders"
-            className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-          >
-            You can still view the user&apos;s order history here.
-          </Link>
-          <a href="#" className="text-sm font-semibold text-gray-900">
-            Contact support <span aria-hidden="true">&rarr;</span>
-          </a>
-        </div>
-      </div>
-    )
-  }
-  const str = await response.Body?.transformToString();
-  const p = JSON.parse(str!).user_persona;
+  const p = await getUserPersona(userId);
+  if (!p) return <NotFound />;
 
   return (
     <div
@@ -85,9 +97,6 @@ export default async function Page() {
                 <li>Prefers <strong>{p.shopping_behavior.preferred_shopping_times.join(" and ")}</strong>.</li>
                 <li>Favorite shopping days: <strong>{p.shopping_behavior.favorite_shopping_days.join(" and ")}</strong>.</li>
                 <li>Purchases <strong>{p.shopping_behavior.common_purchases.join(" and ")}</strong>.</li>
-                {/*<li>Drinks <strong>soda regularly</strong>, possibly as a habit or energy boost.</li>*/}
-                {/*<li>Buys <strong>paper towels in bulk</strong>, indicating a well-organized household.</li>*/}
-                {/*<li>Includes some fresh fruit, suggesting an occasional preference for fresh produce.</li>*/}
             </ul>
         </div>
 
@@ -101,8 +110,6 @@ export default async function Page() {
                 </li>
                 <li><strong>Balanced indulgence</strong> - {p.dietary_habits.balanced_indulgence.join(", ")}.
                 </li>
-                {/*<li><strong>Lactose-conscious choices</strong> - Buys almond milk and Greek yogurt.</li>*/}
-                {/*<li><strong>Balanced indulgence</strong> - Enjoys snacks but also buys soda and Cinnamon Toast Crunch.</li>*/}
             </ul>
         </div>
 
@@ -117,11 +124,6 @@ export default async function Page() {
                   <strong>{splits[0]}</strong> - {splits[1]}.
                 </li>
               )})}
-              {/*<li><strong>Convenience & Habit</strong> - {p.shopping_motivations.primary_motivations}.</li>*/}
-              {/*  <li><strong>Protein & Energy Needs</strong> - Prioritizes high-protein, easy-to-consume foods.</li>*/}
-              {/*  <li><strong>On-the-Go or Remote Work Lifestyle</strong> - Prefers snacks over meal prep.</li>*/}
-              {/*  <li><strong>Health-Conscious But Not Strict</strong> - Mixes healthy choices with indulgences.</li>*/}
-              {/*  <li><strong>Stocking Essentials</strong> - Buys in bulk to maintain household efficiency.</li>*/}
             </ul>
         </div>
     </div>
