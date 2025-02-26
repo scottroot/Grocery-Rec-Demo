@@ -40,7 +40,6 @@ export default async function DepartmentsGrid() {
   return (
     <div className="container-xl mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold mb-6 text-center">Browse Departments</h1>
-      {/*<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">*/}
       <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6">
         {departments.map((department: Department) => {
           const departmentName = toTitleCase(department.departmentName);
@@ -49,6 +48,7 @@ export default async function DepartmentsGrid() {
               key={department.departmentId}
               className="bg-white shadow-md rounded-lg p-4 border hover:shadow-lg transition break-inside-avoid"
             >
+              {/* Department Icon */}
               <Link href={`/dept/${department.departmentId}`}>
                 <div className="relative w-auto max-w-16 aspect-square mx-auto mb-4">
                   <Image
@@ -59,6 +59,7 @@ export default async function DepartmentsGrid() {
                   />
                 </div>
               </Link>
+
               {/* Department Header */}
               <Link href={`/dept/${department.departmentId}`} title={`${departmentName} Department`}>
                 <h2 className="text-center text-xl font-semibold text-gray-800 hover:text-blue-900 mb-3">
@@ -68,10 +69,10 @@ export default async function DepartmentsGrid() {
 
               {/* Aisles List */}
               <ul className="space-y-1">
-                {department?.aisles && department.aisles.sort().map((aisle, index) => {
+                {department?.aisles && department.aisles.slice().sort().map((aisle, index) => {
                   const aisleName = toTitleCase(aisle.aisleName);
                   return (
-                    <li key={`${aisle}_${index}`} className=" text-gray-600 hover:text-blue-800 ">
+                    <li key={`${index}_${aisle.aisleName}`} className=" text-gray-600 hover:text-blue-800 ">
                       <Link
                         href={`/dept/${department.departmentId}/${aisle.aisleId}`}
                         title={`${aisleName} Aisle`}

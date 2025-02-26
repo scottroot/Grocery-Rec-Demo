@@ -1,4 +1,5 @@
 "use client"
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Disclosure } from '@headlessui/react'
@@ -6,6 +7,7 @@ import clsx from "clsx";
 import SearchBox from "./SearchBox";
 import NavCartComponent from "./NavCartComponent";
 import NavProfileComponent from "./NavProfileComponent";
+import Logo from "@/components/Navbar/Logo";
 
 
 const MENU_ITEMS = [
@@ -22,9 +24,7 @@ export default function Navbar() {
         <div className="flex h-16 justify-between">
           <div className="flex px-2 lg:px-0">
             <Link href="/" className="flex shrink-0 items-center">
-              <div className="w-auto h-8 bg-red-500 text-gray-50 font-bold leading-none flex items-center px-3 rounded-sm max-sm:text-xs">
-                Grocery <span className="max-sm:hidden">&nbsp;Basket&nbsp;</span> Demo
-              </div>
+              <Logo />
             </Link>
             <div className="ml-6 flex space-x-8">
               {MENU_ITEMS.map((item) => (

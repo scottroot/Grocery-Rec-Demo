@@ -4,6 +4,10 @@ web/.next/
 web/.env
 **/.env
 
+# Exclude any intermediary image files
+*.psd
+**/*.psd
+
 .idea/
 .DS_Store
 Thumbs.db
