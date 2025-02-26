@@ -1,9 +1,8 @@
-import useSWR, { useSWRConfig } from "swr";
-import {SessionData} from "@/lib/session";
-import useSWRMutation from "swr/mutation";
-import {Product} from "@/types";
+import useSWR from "swr";
+import { SessionData } from "@/lib/session";
+import type { Product } from "@/types";
 
-// const fetcher = (url: string) => fetch(url).then((res) => res.json());
+
 async function fetcher<JSON = unknown>(
   input: RequestInfo,
   init?: RequestInit,
