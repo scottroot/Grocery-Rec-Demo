@@ -96,6 +96,7 @@ function RecSection({productIds, userId, endpoint, title}: {productIds: string, 
   return <SecondaryProductGrid title={title} items={data.recommendations} />
 }
 
+// TODO: confirm function logic has been captured in replacement grid component
 // function BoughtTogether({productIds, userId}: {productIds: string, userId: number}) {
 //   const recKey = productIds ? `/api/recs?${productIds}` : null;
 //   const { data, isLoading, error } = useSWR(recKey, fetcher);
@@ -105,7 +106,7 @@ function RecSection({productIds, userId, endpoint, title}: {productIds: string, 
 //   return <SecondaryProductGrid title="Frequently Bought Together" items={data.recommendations} />
 // }
 
-
+// TODO: confirm function logic has been captured in replacement grid component
 // function SimilarUserProducts({productIds, userId}: {productIds: string, userId: number}) {
 //   const recKey = productIds ? `/api/recs/similar-user-products?${productIds}` : null;
 //   const { data, isLoading } = useSWR(recKey, fetcher);
