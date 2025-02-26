@@ -1,19 +1,17 @@
-import {graphRead} from "@/lib/neo4j/neo4js";
+import { graphRead } from "@/lib/neo4j/neo4js";
 
 
-export async function stdGetBoughtTogether(ids: number|number[], limit: number = 5) {
-  let query: string = "";
+export async function stdGetBoughtTogether(ids: number[], limit: number = 5) {
+  let query: string;
   const params: {[p: string]: string|number|number[]} = { limit: parseInt(String(limit)) };
-  if(typeof ids === 'number') {
-    ids = [ids]
-  }
+
   if(ids.length === 1) {
     params.product_id = ids[0]
     query = `
       MATCH (p:Product {product_id: $product_id})<-[:CONTAINS]-(o:Order)-[:CONTAINS]->(rec:Product)
       WHERE rec.product_id <> $product_id
-      RETURN rec.product_id AS recommended_product, rec.name AS product_name, COUNT(o) AS purchase_count
-      ORDER BY purchase_count DESC
+      RETURN rec.product_id AS product_id, rec.product_name AS product_name, COUNT(o) AS copurchase_count
+      ORDER BY copurchase_count DESC
       LIMIT 5;`
   }
   else {
@@ -37,6 +35,8 @@ export async function stdGetBoughtTogether(ids: number|number[], limit: number =
   }
 
   const response = await graphRead(query, params);
+
+  console.log(JSON.stringify({response}))
 
   return response.map(r => ({
     productId: r.product_id,
