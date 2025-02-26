@@ -1,0 +1,15 @@
+[Unit]
+Description=FastAPI Sentence Transformer Embedding Service
+After=network.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/home/ubuntu/
+ExecStart=/home/ubuntu/miniconda3/bin/python /home/ubuntu/server.py
+Restart=always
+RestartSec=5
+StandardOutput=append:/var/log/inference_service.log
+StandardError=append:/var/log/inference_service.log
+
+[Install]
+WantedBy=multi-user.target
