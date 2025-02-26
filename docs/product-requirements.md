@@ -1,4 +1,4 @@
-### Product Requirements Document (PRD)
+### Requirements
 
 #### **Core Features:**
 1. **Search Functionality:** Users can search for products by name or loose description of the product. Searchbox will be present and workable on all pages.
