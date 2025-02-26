@@ -1,24 +1,18 @@
 "use client"
 
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useHookstate } from "@hookstate/core";
 import { localstored } from "@hookstate/localstored";
 import { XMarkIcon } from "@heroicons/react/20/solid";
 
 
-export default function HomepageInfo() {
+export default function WelcomeBanner() {
   const state = useHookstate(
     { welcome: 1 },
     localstored({ key: "user-options-key" })
   );
-  const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-  }, [])
-
-  if(!mounted || !state.welcome.value) return null;
+  if(!state.welcome.value) return null;
 
   return (
     <div className="relative bg-indigo-50/50 rounded">
