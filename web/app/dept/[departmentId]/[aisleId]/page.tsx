@@ -31,10 +31,6 @@ export default async function DepartmentPage({ params, }: { params: Promise<{ ai
         returnUrl="/"
         text={<>back to <span className="italic group-hover:underline mx-1.5">{aisle.departmentName}</span> department</>}
       />
-      <Link href="/" className="group flex items-center">
-        <ArrowUturnLeftIcon className="inline-flex w-3 h-4 mr-2" />
-        back to <span className="italic group-hover:underline mx-1.5">{aisle.departmentName}</span> department
-      </Link>
 
       {/* Aisle title */}
       <h1 className="text-2xl font-bold my-4">{aisle.aisleName}</h1>
