@@ -87,9 +87,11 @@ function SecondaryProductGrid({title, items}: {title: string, items: Product[]})
 }
 
 
+
+
 function RecSection({productIds, userId, endpoint, title}: {productIds: string, userId: number, endpoint: string, title: string}) {
   const recKey = productIds ? `${endpoint}?userId=${userId}&${productIds}` : null;
-  const { data, isLoading } = useSWR(recKey, fetcher);
+  const { data, isLoading } = useSWR<{ recommendations: Product[] }>(recKey, fetcher);
   if(isLoading) return <div>Loading {title}...</div>
   if (!data?.recommendations?.length) return null;
 
