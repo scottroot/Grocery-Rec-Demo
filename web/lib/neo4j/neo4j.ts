@@ -1,4 +1,4 @@
-import {driver, isInt} from "./neo4jsDriver";
+import {driver, isInt} from "./neo4jDriver";
 
 
 /**
