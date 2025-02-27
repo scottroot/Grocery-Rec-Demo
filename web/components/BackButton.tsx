@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
-import {ArrowUturnLeftIcon} from "@heroicons/react/20/solid";
+import { ArrowUturnLeftIcon } from "@heroicons/react/20/solid";
 
 
 export default function BackButton({ returnUrl, text }: { returnUrl?: string, text?: string|ReactNode }) {

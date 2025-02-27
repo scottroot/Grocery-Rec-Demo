@@ -7,10 +7,6 @@ import {useCart} from "@/lib/useCart";
 export default function SwitchButton({title, subtitle, targetId}: {title: string; subtitle: string, targetId: number}) {
   const { userId, switchUser } = useCart();
 
-  // const isActive = Boolean(
-  //   (title === "Guest" && (!userId || userId === 0))
-  //   || (title === "Random" && (userId && userId > 0))
-  // );
   const isActive = Boolean(
     (targetId === 0 && userId === 0)
     || (targetId === 1 && Number(userId || 0) > 0)
@@ -34,7 +30,6 @@ export default function SwitchButton({title, subtitle, targetId}: {title: string
           ? <Image alt="" src="/shuffle.png" width={40} height={40} className="size-10 rounded-full" />
           : <Image alt="" src="/user.jpg" width={40} height={40} className="size-10 rounded-full" />
         }
-        {/*<Image alt="" src="/user.jpg" width={40} height={40} className="size-10 rounded-full" />*/}
       </div>
       <div className="min-w-0 flex-1 text-left">
         <div className="focus:outline-none">

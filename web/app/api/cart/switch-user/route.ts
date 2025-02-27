@@ -31,20 +31,23 @@ export async function POST(request: NextRequest) {
 
     // If `userId` is `undefined` or `-1`, assign a random user
     if (typeof userId === "undefined" || userId === -1) {
-      const randomUserResponse = await graphRead(
-        `
-        MATCH (u:User)
-        WHERE u.user_id <> $userId
-        WITH u, rand() AS r
-        ORDER BY r
-        LIMIT 1
-        RETURN u.user_id AS randomUserId;
-        `,
-        { userId: session?.userId || 1 } // Default to `1` if no session user ID exists
-      );
+      // TODO: remove this manual list once I've run the rest of the persona generations...
+      // const randomUserResponse = await graphRead(
+      //   `
+      //   MATCH (u:User)
+      //   WHERE u.user_id <> $userId
+      //   WITH u, rand() AS r
+      //   ORDER BY r
+      //   LIMIT 1
+      //   RETURN u.user_id AS randomUserId;
+      //   `,
+      //   { userId: session?.userId || 1 } // Default to `1` if no session user ID exists
+      // );
 
-      // Extract new user ID from the response
-      newUserId = (randomUserResponse as any)?.[0]?.randomUserId;
+      // // Extract new user ID from the response
+      // newUserId = (randomUserResponse as any)?.[0]?.randomUserId;
+      const generatedUserPersonas = [17282, 122928, 134788, 134840, 160962];
+      newUserId = generatedUserPersonas[Math.floor(Math.random() * generatedUserPersonas.length)];
 
       // Ensure a valid `userId` is found
       if (!newUserId) {
