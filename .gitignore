@@ -3,6 +3,7 @@ web/package-lock.json
 web/.next/
 web/.env
 **/.env
+persona-generator/.env
 web/archive
 
 # Exclude any intermediary image files
