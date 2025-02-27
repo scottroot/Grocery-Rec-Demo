@@ -8,23 +8,35 @@
 ----
 ## Demo
 
-[Link to Live Demo](https://www.github.com/scottroot/Grocery-Rec-Demo)
+[Link to Live Demo](https://grocery.scotthendrix.dev)
 
 ----
 ## Project Structure
-This project consists of two main components:
+This project consists of a few components:
 
-📂 **/ data** - Backend Setup (Python + Neo4j)
+📂 **data-pipeline** - Backend Setup (Python + Neo4j)
 - Database Setup – Scripts to set up a Neo4j graph database and index the Instacart CSV data.
 - Vector Embeddings – Scripts to generate and store embeddings for recommendations.
 - Graph Queries – Cypher queries for search, recommendations, and user persona analysis.
   
-📂 **/ web** - Frontend (Next.js)
+📂 **persona-generator** - User Persona Creation (Python + OpenAI + Neo4j)
+- Persona Writeups – Generates personalized user descriptions based on Neo4j data.
+- AI-Powered Summaries – Uses OpenAI to enhance user insights.
+- Profile Enrichment – Extracts behavioral patterns and trends from graph data.
+  
+📂 **inference-api** - Real-time Embedding Service (Python + FastAPI + Sentence Transformers)
+- API for Embeddings – Provides a simple API to generate vector embeddings on demand.
+- Search & Similarity – Supports quick comparisons for recommendations.
+- Lightweight & Fast – Runs efficiently as a microservice.
+  
+📂 **web** - Frontend (Next.js + Tailwind)
 - Interactive UI – A Next.js web app located in the /web folder.
 - API Integration – Fetches recommendations and search results from the backend.
 - Demo Experience – Users can build carts, explore personas, and view recommendations.
 ----
 ## Artifacts and Documentation
+TODO: revisit this...
+  
 [Uploading to /docs folder]([https://github.com/scottroot/Grocery-Rec-Demo/docs](https://github.com/scottroot/Grocery-Rec-Demo/tree/main/docs))
 - **Business Case:** Project justification and strategic goals.
 - **User Personas:** Profiles of target users and their needs.
