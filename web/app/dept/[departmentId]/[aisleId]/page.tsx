@@ -1,5 +1,3 @@
-import Link from "next/link";
-import { ArrowUturnLeftIcon } from "@heroicons/react/20/solid";
 import ProductGrid from "@/components/ProductGrid";
 import BackButton from "@/components/BackButton";
 import { getAisleProducts } from "@/lib/neo4j/queries/getAisleProducts";
